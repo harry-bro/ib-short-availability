@@ -1,0 +1,8 @@
+tools/*
+.venv
+venv
+test
+__pycache__/
+example_data
+analysis_output
+.DS_store

@@ -1,0 +1,13 @@
+
+pandas
+numpy
+pyarrow
+
+tqdm
+yfinance
+
+matplotlib
+seaborn
+scikit-learn
+jupyterlab
+ipykernel

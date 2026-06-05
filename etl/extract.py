@@ -164,7 +164,7 @@ def ingest_one(ftp: FTP, base: str, config: dict, md5_index: dict) -> None:
     if config['debounce_sec'] > 0:
         time.sleep(config['debounce_sec'])
     
-    # Expected md5 from server; skip if already seen
+    # Expected md5 from server, skip if already seen
     exp_md5 = ftp_read_md5(ftp, base)
     if exp_md5 and exp_md5 in md5_index:
         print(f"[SKIP md5] {base} already ingested at {md5_index[exp_md5]}")
@@ -239,11 +239,11 @@ def ingest_from_events(event_files: List[Path], config: dict):
             for attempt in range(3): 
                 try:
                     ingest_one(ftp, base, config, md5_index)
-                    break # Success! Move to next file
+                    break 
                 except (OSError, ConnectionError, EOFError) as e:
-                    # This catches WinError 10053, 10054, and Pipe errors
+                    # catches errors
                     print(f"[RECONNECT] Connection lost on {base}. Attempting recovery... ({e})")
-                    time.sleep(5) # Give the network a breather
+                    time.sleep(5) 
                     try:
                         ftp.close() # Clean up old socket
                     except:

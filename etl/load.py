@@ -312,7 +312,6 @@ def build_enriched_dataset(
             missing_count += 1
             continue
         
-        # Get the most recent pricing row
         price_row = valid_prices.iloc[-1]
         
         # Compute pricing features
@@ -356,7 +355,7 @@ def build_enriched_dataset(
     if missing_count > 0:
         print(f"\n  WARNING: {missing_count:,} availability records had no matching pricing data")
     
-    # Convert to DataFrame
+    # Convert to df
     enriched_df = pd.DataFrame(enriched_records)
     enriched_df = enriched_df.sort_values(["ticker", "region", "asof_utc"])
     

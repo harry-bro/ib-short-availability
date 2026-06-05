@@ -111,7 +111,10 @@ python validate_dataset.py --dataset basic --start-date 2025-11-04 --end-date 20
 python validate_dataset.py --dataset enriched --start-date 2025-11-04 --end-date 2025-11-09
 ```
 
-If your datasets live somewhere else, point `--base-dir` at the folder that contains `basic/` and `enriched/`:
+If datasets live somewhere else, point `--base-dir` at the folder that contains `basic/` and `enriched/`:
 ```bash
 python validate_dataset.py --dataset basic --base-dir data
 ```
+# Analysis
+
+See analysis_notebook.ipynb for discussion, exploratory data analysis, and feature proposal.

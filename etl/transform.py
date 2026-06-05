@@ -227,21 +227,14 @@ def normalize_ib_data(raw_dir: str, out_dir: str) -> int:
 
 # Curated list of US tickers
 CURATED_TICKERS = [
-    # Mega-cap tech
+
     'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA',
-    # Other mega-caps
     'V', 'JNJ', 'WMT', 'JPM', 'PG', 'MA', 'UNH', 'HD',
-    # Tech/Growth
     'NFLX', 'DIS', 'CSCO', 'ADBE', 'CRM', 'ORCL', 'INTC', 'AMD',
-    # Finance
     'BAC', 'WFC', 'GS', 'MS', 'C', 'AXP', 'SCHW',
-    # Healthcare/Pharma
     'PFE', 'ABBV', 'MRK', 'TMO', 'LLY', 'ABT',
-    # Consumer
     'KO', 'PEP', 'MCD', 'SBUX', 'TGT',
-    # Energy/Industrial
     'XOM', 'CVX', 'BA', 'CAT', 'HON', 'GE',
-    # High borrow demand stocks 
     'GME', 'AMC', 'BBBY'
 ]
 
@@ -594,7 +587,7 @@ def transform_pipeline(dataset: str, start_date: str, end_date: str, config: dic
     # ENRICHED or BOTH: Full enrichment pipeline
     if dataset in ['enriched', 'both']:
         
-        # Step 1: Normalize (if not already done)
+        # Normalize (if not already done)
         if dataset == 'enriched':
             rows = normalize_ib_data(
                 raw_dir=config['raw_dir'],
@@ -602,7 +595,7 @@ def transform_pipeline(dataset: str, start_date: str, end_date: str, config: dic
             )
             results['normalized_rows'] = rows
         
-        # Step 2: Fetch market data
+        # Fetch market data
         tickers = fetch_market_data(
             output_dir=config['market_data_dir'],
             start_date=start_date,
@@ -610,7 +603,7 @@ def transform_pipeline(dataset: str, start_date: str, end_date: str, config: dic
         )
         results['enriched_tickers'] = tickers
         
-        # Step 3: Extend pricing to 24h
+        # Extend pricing to 24h
         rows_added = extend_pricing_to_24h(
             input_dir=config['market_data_dir'],
             output_dir=config['market_data_dir']

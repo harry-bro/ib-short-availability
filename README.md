@@ -1,4 +1,4 @@
-# IB Securities Lending ETL
+# ETL
 
 The end-to-end driver is `orchestrate.sh`, which runs:
 - `python -m etl.extract --mode monitor ...`

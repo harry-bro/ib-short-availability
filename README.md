@@ -1,3 +1,8 @@
+This project was done as a take-home task to look into the feasibility of using publicly available lending data to predict pricing dynamics. This repo contains a pipeline to download historical lending data (from Interactive Broker's shortstock ftp) and create datasets, as well as some exploratory analysis and a feature set.
+
+(this was migrated from a private repo hence lack of commit history)
+
+
 # ETL
 
 The end-to-end driver is `orchestrate.sh`, which runs:
